@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Owlypixel",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^4.0.0",
     "irc-framework": "^2.10.2",
