@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Twitch chatbot</title>
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
+	<style>
+		#wrapper{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;	
+		}
+		#gifk {
+			border: solid 10px #efefef;
+			box-shadow: 2px 2px 16px -2px black;	
+		}
+		p {
+			font-size: 4rem;
+			font-weight: 600;	
+		}
+		body{
+			background-color: #A78152;
+			background-image:
+				linear-gradient(335deg, #b28d60 23px, transparent 23px),		
+				linear-gradient(155deg, #b28d60 23px, transparent 23px),		
+				linear-gradient(335deg, #b28d60 23px, transparent 23px),		
+				linear-gradient(155deg, #b28d60 23px, transparent 23px);
+			background-size: 58px 58px;
+			background-position: 0 2px, 4px 35px, 29px 31px, 34px 6px;
+			height: 100%;
+			width: 100%;
+			font-family: Oswald, sans-serif;		
+		}
+		span {
+			color: #05e129;	
+		}
+	</style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <img id="gifk"/>
+    <p>Hello <span id="nik"></span>, how do you like this owl?</p>
+  </div>
+  <script src="/skateboard.min.js"></script>
+  <script>
+		const img = document.getElementById("gifk");
+		const span = document.getElementById("nik");
+		const wrapper = document.getElementById("wrapper");
+
+		wrapper.style.display = "none";
+		skateboard().on("data", (data) => {
+			showMessage(data);	
+		});		
+		
+		function showMessage(nick){
+			span.textContent = nick;
+			const random = Math.round(Math.random() * 3);
+			const gif = `images/gif${random}.gif`;
+			img.src = gif;
+			wrapper.style.display = "flex";
+			
+			setTimeout(() => wrapper.style.display = "none", 5000); 
+		}	
+
+  </script> 
+
+</body>
+</html>
+
